@@ -1,0 +1,45 @@
+Keep 'em Out Script Structure
+
+Namespace: Project.Managers (desc. and usage at the start of the script)
+	GameManager
+	KeyManager
+	ResourceManager
+	EventManager
+	UIManager
+	AudioManager	
+	SaveManager
+	ConfigurationManager
+	TranslationManager
+
+Namespace: Project.Player
+	PlayerStats
+	PlayerMovement
+	PlayerLook
+	PlayerAttack
+	PlayerAnim
+	PlayerUI
+
+	PlayerStats -> PlayerMovement, PlayerLook, PlayerAttack, PlayerUI
+	PlayerMovement & PlayerAttack -> PlayerAnim
+
+Namespace: Project.Enemy
+	EnemyStats
+	EnemyMovement
+	EnemyAnim
+	EnemyAttack
+	EnemyUI
+
+	EnemyStats -> EnemyMovement, EnemyAttack, EnemyUI
+	EnemyMovement & EnemyAttack -> EnemyAnim
+
+Namespace: Project.Environment
+	EnvStats (When needed like Breakable Wall HP)
+	EnvUI (When needed like Breakable Wall HP)
+
+Namespace Project.UI
+	UIScripts (all individual)
+
+	UIScripts -> EventManager, UIManager
+	UIManager -> UIScripts
+
+	

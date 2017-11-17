@@ -1,0 +1,17 @@
+Keem 'em Out File Structure
+
+Art: All art assets
+	Art/Materials: General materials (not model specific)
+	Art/Models: .fbx models
+	Art/Models/Materials: Model specific materials (seperate with sub-files)
+	Art/Sprites: UI sprites, ... (min. size 512x512)
+	Art/Shaders: Build shaders, effect shaders, ...
+
+Documents: Important documents explaining the project (or parts associated with it)
+
+Scenes: All scenes in the game (maximum of 3 TestLevels at a time)
+
+Scripts: All scripts (in their respective namespaces)
+	Scripts/Enemy: All scripts with enemy logic / functionality
+	Scripts/Managers: All manager scripts
+	Scripts/Player: All scripts with player logic / functionality
