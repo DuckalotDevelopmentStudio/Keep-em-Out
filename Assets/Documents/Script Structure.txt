@@ -1,6 +1,8 @@
 Keep 'em Out Script Structure
 
-Namespace: Project.Managers (desc. and usage at the start of the script)
+Description and usage at the start of a script!
+
+Namespace: Project.Managers (use Project.Managers.Properties if you need a class with stuff for Lists)
 	GameManager
 	KeyManager
 	ResourceManager
