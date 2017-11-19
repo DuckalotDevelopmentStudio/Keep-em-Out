@@ -18,7 +18,7 @@ namespace Project.Managers
         void Awake()
         {
             #region Singleton
-            if (instance != this)
+            if (instance != null)
             {
                 print("More than one instance of " + this + ". （╯ ͡°  ل͜ ͡°）╯︵ ┻━┻");
             }
@@ -27,43 +27,43 @@ namespace Project.Managers
         }
 
         #region Enable/Disable one UI object
-        /// <summary>Enables a single UI object.</summary>
-        /// <param name="uiName">Name of the UI object inside of the uiObjects list.</param>
-        public void EnableUIObject(string uiName)
+        /// <summary>Enables a single UI object</summary>
+        /// <param name="objectName">Name of the UI object inside of uiObjects list</param>
+        public void EnableUIObject(string objectName)
         {
             for(int i = 0; i < uiObjects.Count; i++)
             {
-                if(uiName == uiObjects[i].uiName)
+                if(objectName == uiObjects[i].uiName)
                 {
-                    if(uiObjects[i].uiGameObject.activeInHierarchy)
+                    if(!uiObjects[i].uiGameObject.activeInHierarchy)
                     {
-                        print(uiObjects[i].uiGameObject + " is already enabled");
-                        return;
+                        uiObjects[i].uiGameObject.SetActive(true);
                     }
                     else
                     {
-                        uiObjects[i].uiGameObject.SetActive(true);
+                        print(uiObjects[i].uiGameObject + " is already enabled");
+                        return;
                     }
                 }
             }
         }
 
-        /// <summary>Disables a single UI object.</summary>
-        /// <param name="uiName">Name of the UI object inside of the uiObjects list.</param>
-        public void DisableUIObject(string uiName)
+        /// <summary>Disables a single UI object</summary>
+        /// <param name="objectName">Name of the UI object inside of uiObjects list</param>
+        public void DisableUIObject(string objectName)
         {
             for (int i = 0; i < uiObjects.Count; i++)
             {
-                if (uiName == uiObjects[i].uiName)
+                if (objectName == uiObjects[i].uiName)
                 {
-                    if (!uiObjects[i].uiGameObject.activeInHierarchy)
+                    if (uiObjects[i].uiGameObject.activeInHierarchy)
                     {
-                        print(uiObjects[i].uiGameObject + " is already disabled");
-                        return;
+                        uiObjects[i].uiGameObject.SetActive(false);
                     }
                     else
                     {
-                        uiObjects[i].uiGameObject.SetActive(false);
+                        print(uiObjects[i].uiGameObject + " is already disabled");
+                        return;
                     }
                 }
             }
@@ -71,141 +71,41 @@ namespace Project.Managers
         #endregion
 
         #region Enable/Disable multiple UI objects
-        /// <summary>Enables two UI objects.</summary>
-        /// <param name="uiNameOne">Name of the first UI object inside of uiObjects list</param>
-        /// <param name="uiNameTwo">Name of the second UI object inside of uiObjects list</param>
-        public void EnableUIObjects(string uiNameOne, string uiNameTwo)
+        /// <summary>Enables multiple UI objects</summary>
+        /// <param name="objectNames">String array of multiple UI object names to enable at once (HAVE TO BE THE SAME AS IN uiObjects LIST)</param>
+        public void EnableUIObjects(string[] objectNames)
         {
             for(int i = 0; i < uiObjects.Count; i++)
             {
-                if(uiObjects[i].uiName == uiNameOne 
-                    || uiObjects[i].uiName == uiNameTwo)
+                if(uiObjects[i].uiName == objectNames[i])
                 {
-                    if(uiObjects[i].uiGameObject.activeInHierarchy)
-                    {
-                        print(uiObjects[i].uiGameObject + " is already enabled");
-                    }
-                    else
+                    if(!uiObjects[i].uiGameObject.activeInHierarchy)
                     {
                         uiObjects[i].uiGameObject.SetActive(true);
                     }
-                }
-            }
-        }
-        /// <summary>Enables three UI objects.</summary>
-        /// <param name="uiNameOne">Name of the first UI object inside of uiObjects list</param>
-        /// <param name="uiNameTwo">Name of the second UI object inside of uiObjects list</param>
-        /// <param name="uiNameThree">Name of the third UI object inside of uiObjects list</param>
-        public void EnableUIObjects(string uiNameOne, string uiNameTwo, string uiNameThree)
-        {
-            for (int i = 0; i < uiObjects.Count; i++)
-            {
-                if (uiObjects[i].uiName == uiNameOne 
-                    || uiObjects[i].uiName == uiNameTwo 
-                    || uiObjects[i].uiName == uiNameThree)
-                {
-                    if (uiObjects[i].uiGameObject.activeInHierarchy)
-                    {
-                        print(uiObjects[i].uiGameObject + " is already enabled");
-                    }
                     else
                     {
-                        uiObjects[i].uiGameObject.SetActive(true);
-                    }
-                }
-            }
-        }
-        /// <summary>Enables four UI objects.</summary>
-        /// <param name="uiNameOne">Name of the first UI object inside of uiObjects list</param>
-        /// <param name="uiNameTwo">Name of the second UI object inside of uiObjects list</param>
-        /// <param name="uiNameThree">Name of the third UI object inside of uiObjects list</param>
-        /// <param name="uiNameFour">Name of the fourth UI object inside of uiObjects list</param>
-        public void EnableUIObjects(string uiNameOne, string uiNameTwo, string uiNameThree, string uiNameFour)
-        {
-            for (int i = 0; i < uiObjects.Count; i++)
-            {
-                if (uiObjects[i].uiName == uiNameOne 
-                    || uiObjects[i].uiName == uiNameTwo 
-                    || uiObjects[i].uiName == uiNameThree 
-                    || uiObjects[i].uiName == uiNameFour)
-                {
-                    if (uiObjects[i].uiGameObject.activeInHierarchy)
-                    {
                         print(uiObjects[i].uiGameObject + " is already enabled");
-                    }
-                    else
-                    {
-                        uiObjects[i].uiGameObject.SetActive(true);
                     }
                 }
             }
         }
 
-        /// <summary>Disables two UI objects.</summary>
-        /// <param name="uiNameOne">Name of the first UI object inside of uiObjects list</param>
-        /// <param name="uiNameTwo">Name of the second UI object inside of uiObjects list</param>
-        public void DisableUIObjects(string uiNameOne, string uiNameTwo)
+        /// <summary>Disables multiple UI objects</summary>
+        /// <param name="objectNames">String array of multiple UI object names to disable at once (HAVE TO BE THE SAME AS IN uiObjects LIST)</param>
+        public void DisableUIObjects(string[] objectNames)
         {
             for (int i = 0; i < uiObjects.Count; i++)
             {
-                if (uiObjects[i].uiName == uiNameOne
-                    || uiObjects[i].uiName == uiNameTwo)
+                if (uiObjects[i].uiName == objectNames[i])
                 {
                     if (!uiObjects[i].uiGameObject.activeInHierarchy)
                     {
-                        print(uiObjects[i].uiGameObject + " is already disabled");
+                        uiObjects[i].uiGameObject.SetActive(false);
                     }
                     else
                     {
-                        uiObjects[i].uiGameObject.SetActive(false);
-                    }
-                }
-            }
-        }
-        /// <summary>Disables three UI objects.</summary>
-        /// <param name="uiNameOne">Name of the first UI object inside of uiObjects list</param>
-        /// <param name="uiNameTwo">Name of the second UI object inside of uiObjects list</param>
-        /// <param name="uiNameThree">Name of the third UI object inside of uiObjects list</param>
-        public void DisableUIObjects(string uiNameOne, string uiNameTwo, string uiNameThree)
-        {
-            for (int i = 0; i < uiObjects.Count; i++)
-            {
-                if (uiObjects[i].uiName == uiNameOne
-                    || uiObjects[i].uiName == uiNameTwo
-                    || uiObjects[i].uiName == uiNameThree)
-                {
-                    if (!uiObjects[i].uiGameObject.activeInHierarchy)
-                    {
                         print(uiObjects[i].uiGameObject + " is already disabled");
-                    }
-                    else
-                    {
-                        uiObjects[i].uiGameObject.SetActive(false);
-                    }
-                }
-            }
-        }
-        /// <summary>Disables four UI objects.</summary>
-        /// <param name="uiNameOne">Name of the first UI object inside of uiObjects list</param>
-        /// <param name="uiNameTwo">Name of the second UI object inside of uiObjects list</param>
-        /// <param name="uiNameThree">Name of the third UI object inside of uiObjects list</param>
-        /// <param name="uiNameFour">Name of the fourth UI object inside of uiObjects list</param>
-        public void DisableUIObjects(string uiNameOne, string uiNameTwo, string uiNameThree, string uiNameFour)
-        {
-            for (int i = 0; i < uiObjects.Count; i++)
-            {
-                if (uiObjects[i].uiName == uiNameOne
-                    || uiObjects[i].uiName == uiNameTwo
-                    || uiObjects[i].uiName == uiNameThree
-                    || uiObjects[i].uiName == uiNameFour)
-                {
-                    if (!uiObjects[i].uiGameObject.activeInHierarchy)
-                    {
-                        print(uiObjects[i].uiGameObject + " is already disabled");
-                    }
-                    else
-                    {
-                        uiObjects[i].uiGameObject.SetActive(false);
                     }
                 }
             }
@@ -213,36 +113,36 @@ namespace Project.Managers
         #endregion
 
         #region Enable/Disable all UI objects
-        /// <summary>Enables all UI objects.</summary>
+        /// <summary>Enables all UI objects</summary>
         public void EnableAllUIObjects()
         {
             for(int i = 0; i< uiObjects.Count; i++)
             {
-                if(uiObjects[i].uiGameObject.activeInHierarchy)
+                if(!uiObjects[i].uiGameObject.activeInHierarchy)
+                {
+                    uiObjects[i].uiGameObject.SetActive(true);
+                }
+                else
                 {
                     print("All UI objects already enabled");
                     return;
                 }
-                else
-                {
-                    uiObjects[i].uiGameObject.SetActive(true);
-                }
             }
         }
 
-        /// <summary>Disables all UI objects.</summary>
+        /// <summary>Disables all UI objects</summary>
         public void DisableAllUIObjects(string uiName)
         {
             for (int i = 0; i < uiObjects.Count; i++)
             {
-                if (!uiObjects[i].uiGameObject.activeInHierarchy)
+                if (uiObjects[i].uiGameObject.activeInHierarchy)
                 {
-                    print("All UI objects already disabled");
-                    return;
+                    uiObjects[i].uiGameObject.SetActive(false);
                 }
                 else
                 {
-                    uiObjects[i].uiGameObject.SetActive(false);
+                    print("All UI objects already disabled");
+                    return;
                 }
             }
         }

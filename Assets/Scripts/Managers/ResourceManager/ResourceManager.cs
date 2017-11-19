@@ -32,14 +32,14 @@ namespace Project.Managers
             {
                 if(importantGameObjects[i].resourceName == objectName)
                 {
-                    if(importantGameObjects[i].resourceObject.activeInHierarchy)
+                    if(!importantGameObjects[i].resourceObject.activeInHierarchy)
                     {
-                        print(importantGameObjects[i].resourceObject.name + " is already enabled");
-                        return;
+                        importantGameObjects[i].resourceObject.SetActive(true);
                     }
                     else
                     {
-                        importantGameObjects[i].resourceObject.SetActive(true);
+                        print(importantGameObjects[i].resourceObject.name + " is already enabled");
+                        return;
                     }
                 }
             }
@@ -51,14 +51,14 @@ namespace Project.Managers
             {
                 if (importantGameObjects[i].resourceName == objectName)
                 {
-                    if (!importantGameObjects[i].resourceObject.activeInHierarchy)
+                    if (importantGameObjects[i].resourceObject.activeInHierarchy)
                     {
-                        print(importantGameObjects[i].resourceObject.name + " is already enabled");
-                        return;
+                        importantGameObjects[i].resourceObject.SetActive(false);
                     }
                     else
                     {
-                        importantGameObjects[i].resourceObject.SetActive(false);
+                        print(importantGameObjects[i].resourceObject.name + " is already enabled");
+                        return;
                     }
                 }
             }
@@ -66,117 +66,37 @@ namespace Project.Managers
         #endregion
 
         #region Enable/Disable multiple GameObjects
-        public void EnableGameObjects(string firstObjectName, string secondObjectName)
+        public void EnableGameObjects(string[] objectNames)
         {
             for(int i = 0; i < importantGameObjects.Count; i++)
             {
-                if(importantGameObjects[i].resourceName == firstObjectName 
-                    || importantGameObjects[i].resourceName == secondObjectName)
+                if(importantGameObjects[i].resourceName == objectNames[i])
                 {
                     if(importantGameObjects[i].resourceObject.activeInHierarchy)
                     {
-                        print(importantGameObjects[i].resourceObject.name + " is already enabled");
+                        importantGameObjects[i].resourceObject.SetActive(true);
                     }
                     else
                     {
-                        importantGameObjects[i].resourceObject.SetActive(true);
-                    }
-                }
-            }
-        }
-        public void EnableGameObjects(string firstObjectName, string secondObjectName, string thirdObjectName)
-        {
-            for (int i = 0; i < importantGameObjects.Count; i++)
-            {
-                if (importantGameObjects[i].resourceName == firstObjectName 
-                    || importantGameObjects[i].resourceName == secondObjectName
-                    || importantGameObjects[i].resourceName == thirdObjectName)
-                {
-                    if (importantGameObjects[i].resourceObject.activeInHierarchy)
-                    {
                         print(importantGameObjects[i].resourceObject.name + " is already enabled");
-                    }
-                    else
-                    {
-                        importantGameObjects[i].resourceObject.SetActive(true);
-                    }
-                }
-            }
-        }
-        public void EnableGameObjects(string firstObjectName, string secondObjectName, string thirdObjectName, string fourthObjectName)
-        {
-            for (int i = 0; i < importantGameObjects.Count; i++)
-            {
-                if (importantGameObjects[i].resourceName == firstObjectName 
-                    || importantGameObjects[i].resourceName == secondObjectName
-                    || importantGameObjects[i].resourceName == thirdObjectName
-                    || importantGameObjects[i].resourceName == fourthObjectName)
-                {
-                    if (importantGameObjects[i].resourceObject.activeInHierarchy)
-                    {
-                        print(importantGameObjects[i].resourceObject.name + " is already enabled");
-                    }
-                    else
-                    {
-                        importantGameObjects[i].resourceObject.SetActive(true);
                     }
                 }
             }
         }
 
-        public void DisableGameObjects(string firstObjectName, string secondObjectName)
+        public void DisableGameObjects(string[] objectNames)
         {
             for (int i = 0; i < importantGameObjects.Count; i++)
             {
-                if (importantGameObjects[i].resourceName == firstObjectName
-                    || importantGameObjects[i].resourceName == secondObjectName)
+                if (importantGameObjects[i].resourceName == objectNames[i])
                 {
-                    if (!importantGameObjects[i].resourceObject.activeInHierarchy)
+                    if (importantGameObjects[i].resourceObject.activeInHierarchy)
                     {
-                        print(importantGameObjects[i].resourceObject.name + " is already disabled");
+                        importantGameObjects[i].resourceObject.SetActive(false);
                     }
                     else
                     {
-                        importantGameObjects[i].resourceObject.SetActive(true);
-                    }
-                }
-            }
-        }
-        public void DisableGameObjects(string firstObjectName, string secondObjectName, string thirdObjectName)
-        {
-            for (int i = 0; i < importantGameObjects.Count; i++)
-            {
-                if (importantGameObjects[i].resourceName == firstObjectName
-                    || importantGameObjects[i].resourceName == secondObjectName
-                    || importantGameObjects[i].resourceName == thirdObjectName)
-                {
-                    if (!importantGameObjects[i].resourceObject.activeInHierarchy)
-                    {
                         print(importantGameObjects[i].resourceObject.name + " is already disabled");
-                    }
-                    else
-                    {
-                        importantGameObjects[i].resourceObject.SetActive(true);
-                    }
-                }
-            }
-        }
-        public void DisableGameObjects(string firstObjectName, string secondObjectName, string thirdObjectName, string fourthObjectName)
-        {
-            for (int i = 0; i < importantGameObjects.Count; i++)
-            {
-                if (importantGameObjects[i].resourceName == firstObjectName
-                    || importantGameObjects[i].resourceName == secondObjectName
-                    || importantGameObjects[i].resourceName == thirdObjectName
-                    || importantGameObjects[i].resourceName == fourthObjectName)
-                {
-                    if (!importantGameObjects[i].resourceObject.activeInHierarchy)
-                    {
-                        print(importantGameObjects[i].resourceObject.name + " is already disabled");
-                    }
-                    else
-                    {
-                        importantGameObjects[i].resourceObject.SetActive(true);
                     }
                 }
             }
@@ -190,14 +110,14 @@ namespace Project.Managers
             {
                 if (particleEffects[i].resourceName == particleName)
                 {
-                    if (particleEffects[i].resourceObject.activeInHierarchy)
+                    if (!particleEffects[i].resourceObject.activeInHierarchy)
                     {
-                        print(particleEffects[i].resourceObject.name + " is already enabled");
-                        return;
+                        particleEffects[i].resourceObject.SetActive(true);
                     }
                     else
                     {
-                        particleEffects[i].resourceObject.SetActive(true);
+                        print(particleEffects[i].resourceObject.name + " is already enabled");
+                        return;
                     }
                 }
             }
@@ -209,14 +129,14 @@ namespace Project.Managers
             {
                 if (particleEffects[i].resourceName == particleName)
                 {
-                    if (!particleEffects[i].resourceObject.activeInHierarchy)
+                    if (particleEffects[i].resourceObject.activeInHierarchy)
                     {
-                        print(particleEffects[i].resourceObject.name + " is already enabled");
-                        return;
+                        particleEffects[i].resourceObject.SetActive(false);
                     }
                     else
                     {
-                        particleEffects[i].resourceObject.SetActive(false);
+                        print(particleEffects[i].resourceObject.name + " is already enabled");
+                        return;
                     }
                 }
             }
@@ -224,117 +144,37 @@ namespace Project.Managers
         #endregion
 
         #region Enable/Disable multiple Particle Systems
-        public void EnableParticleSystems(string firstParticleName, string secondParticleName)
+        public void EnableParticleSystems(string[] particleNames)
         {
             for (int i = 0; i < particleEffects.Count; i++)
             {
-                if (particleEffects[i].resourceName == firstParticleName
-                    || particleEffects[i].resourceName == secondParticleName)
+                if (particleEffects[i].resourceName == particleNames[i])
                 {
-                    if (particleEffects[i].resourceObject.activeInHierarchy)
-                    {
-                        print(particleEffects[i].resourceObject.name + " is already enabled");
-                    }
-                    else
+                    if (!particleEffects[i].resourceObject.activeInHierarchy)
                     {
                         particleEffects[i].resourceObject.SetActive(true);
                     }
-                }
-            }
-        }
-        public void EnableParticleSystems(string firstParticleName, string secondParticleName, string thirdParticleName)
-        {
-            for (int i = 0; i < particleEffects.Count; i++)
-            {
-                if (particleEffects[i].resourceName == firstParticleName
-                    || particleEffects[i].resourceName == secondParticleName
-                    || particleEffects[i].resourceName == thirdParticleName)
-                {
-                    if (particleEffects[i].resourceObject.activeInHierarchy)
-                    {
-                        print(particleEffects[i].resourceObject.name + " is already enabled");
-                    }
                     else
                     {
-                        particleEffects[i].resourceObject.SetActive(true);
-                    }
-                }
-            }
-        }
-        public void EnableParticleSystems(string firstParticleName, string secondParticleName, string thirdParticleName, string fourthParticleName)
-        {
-            for (int i = 0; i < particleEffects.Count; i++)
-            {
-                if (particleEffects[i].resourceName == firstParticleName
-                    || particleEffects[i].resourceName == secondParticleName
-                    || particleEffects[i].resourceName == thirdParticleName
-                    || particleEffects[i].resourceName == fourthParticleName)
-                {
-                    if (particleEffects[i].resourceObject.activeInHierarchy)
-                    {
                         print(particleEffects[i].resourceObject.name + " is already enabled");
-                    }
-                    else
-                    {
-                        particleEffects[i].resourceObject.SetActive(true);
                     }
                 }
             }
         }
 
-        public void DisableParticleSystems(string firstParticleName, string secondParticleName)
+        public void DisableParticleSystems(string[] particleNames)
         {
             for (int i = 0; i < particleEffects.Count; i++)
             {
-                if (particleEffects[i].resourceName == firstParticleName
-                    || particleEffects[i].resourceName == secondParticleName)
+                if (particleEffects[i].resourceName == particleNames[i])
                 {
                     if (!particleEffects[i].resourceObject.activeInHierarchy)
                     {
-                        print(particleEffects[i].resourceObject.name + " is already disabled");
+                        particleEffects[i].resourceObject.SetActive(false);
                     }
                     else
                     {
-                        particleEffects[i].resourceObject.SetActive(false);
-                    }
-                }
-            }
-        }
-        public void DisableParticleSystems(string firstParticleName, string secondParticleName, string thirdParticleName)
-        {
-            for (int i = 0; i < particleEffects.Count; i++)
-            {
-                if (particleEffects[i].resourceName == firstParticleName
-                    || particleEffects[i].resourceName == secondParticleName
-                    || particleEffects[i].resourceName == thirdParticleName)
-                {
-                    if (!particleEffects[i].resourceObject.activeInHierarchy)
-                    {
                         print(particleEffects[i].resourceObject.name + " is already disabled");
-                    }
-                    else
-                    {
-                        particleEffects[i].resourceObject.SetActive(false);
-                    }
-                }
-            }
-        }
-        public void DisableParticleSystems(string firstSystemName, string secondSystemName, string thirdSystemName, string fourthSystemName)
-        {
-            for (int i = 0; i < particleEffects.Count; i++)
-            {
-                if (particleEffects[i].resourceName == firstSystemName
-                    || particleEffects[i].resourceName == secondSystemName
-                    || particleEffects[i].resourceName == thirdSystemName
-                    || particleEffects[i].resourceName == fourthSystemName)
-                {
-                    if (!particleEffects[i].resourceObject.activeInHierarchy)
-                    {
-                        print(particleEffects[i].resourceObject.name + " is already disabled");
-                    }
-                    else
-                    {
-                        particleEffects[i].resourceObject.SetActive(false);
                     }
                 }
             }
