@@ -14,4 +14,4 @@ Update the repository
 2. Make sure your have the correct Current repository selected
 3. Click on Fetch origin (or Pull origin)
 4. Submit changes with a title
-5. Fetch origin again
+5. Fetch origin (Puch origin) again
