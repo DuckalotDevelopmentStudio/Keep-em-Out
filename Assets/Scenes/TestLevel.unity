@@ -122,7 +122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &455526486
 Transform:
   m_ObjectHideFlags: 0
@@ -144,14 +144,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 500186185}
-  - component: {fileID: 500186186}
   m_Layer: 0
   m_Name: UIManager Test Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &500186185
 Transform:
   m_ObjectHideFlags: 0
@@ -165,20 +164,11 @@ Transform:
   - {fileID: 1092992970}
   - {fileID: 455526486}
   - {fileID: 1744766219}
+  - {fileID: 1919644194}
+  - {fileID: 557559576}
   m_Father: {fileID: 1021905611}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &500186186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 500186184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 176b11723113d65489b2f857bcd02aea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &505999259
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +337,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &557559575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 557559576}
+  m_Layer: 0
+  m_Name: WhateverTwo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &557559576
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 557559575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 500186185}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &716462850
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,6 +415,7 @@ GameObject:
   - component: {fileID: 1021905611}
   - component: {fileID: 1021905610}
   - component: {fileID: 1021905612}
+  - component: {fileID: 1021905613}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -428,6 +447,7 @@ Transform:
   m_Children:
   - {fileID: 716462851}
   - {fileID: 500186185}
+  - {fileID: 1365392162}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -447,8 +467,29 @@ MonoBehaviour:
     uiGameObject: {fileID: 1092992969}
   - uiName: Ammo
     uiGameObject: {fileID: 455526485}
+  - uiName: Whatever
+    uiGameObject: {fileID: 1919644193}
+  - uiName: Whatever
+    uiGameObject: {fileID: 557559575}
   - uiName: Crosshair
     uiGameObject: {fileID: 1744766218}
+--- !u!114 &1021905613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1021905609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69177edfce69f89408d3d5addeae1136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - audioName: Squaling Pig
+    audioClip: {fileID: 0}
+    loop: 0
+    volume: 0
+    pitch: 0
 --- !u!1 &1092992969
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1092992970
 Transform:
   m_ObjectHideFlags: 0
@@ -477,6 +518,46 @@ Transform:
   m_Father: {fileID: 500186185}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1365392161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1365392162}
+  - component: {fileID: 1365392163}
+  m_Layer: 0
+  m_Name: AudioManager Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1365392162
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1365392161}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 113.44281, y: -150.21179, z: 419.839}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1021905611}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1365392163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1365392161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60e4bf7e8fb5d94099c25665503cd43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1744766218
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1744766219
 Transform:
   m_ObjectHideFlags: 0
@@ -504,4 +585,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 500186185}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1919644193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1919644194}
+  m_Layer: 0
+  m_Name: WhateverOne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1919644194
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1919644193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 500186185}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

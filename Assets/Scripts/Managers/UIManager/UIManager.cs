@@ -20,7 +20,7 @@ namespace Project.Managers
             #region Singleton
             if (instance != null)
             {
-                print("More than one instance of " + this + ". （╯ ͡°  ل͜ ͡°）╯︵ ┻━┻");
+                print("More than one instance of " + this.name + ". （╯ ͡°  ل͜ ͡°）╯︵ ┻━┻");
             }
             instance = this;
             #endregion
@@ -77,15 +77,18 @@ namespace Project.Managers
         {
             for(int i = 0; i < uiObjects.Count; i++)
             {
-                if(uiObjects[i].uiName == objectNames[i])
+                for(int y = 0; y < objectNames.Length; y++)
                 {
-                    if(!uiObjects[i].uiGameObject.activeInHierarchy)
+                    if (uiObjects[i].uiName == objectNames[y])
                     {
-                        uiObjects[i].uiGameObject.SetActive(true);
-                    }
-                    else
-                    {
-                        print(uiObjects[i].uiGameObject + " is already enabled");
+                        if (!uiObjects[i].uiGameObject.activeInHierarchy)
+                        {
+                            uiObjects[i].uiGameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            print(uiObjects[i].uiGameObject + " is already enabled");
+                        }
                     }
                 }
             }
@@ -97,15 +100,18 @@ namespace Project.Managers
         {
             for (int i = 0; i < uiObjects.Count; i++)
             {
-                if (uiObjects[i].uiName == objectNames[i])
+                for (int y = 0; y < objectNames.Length; y++)
                 {
-                    if (!uiObjects[i].uiGameObject.activeInHierarchy)
+                    if (uiObjects[i].uiName == objectNames[y])
                     {
-                        uiObjects[i].uiGameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        print(uiObjects[i].uiGameObject + " is already disabled");
+                        if (uiObjects[i].uiGameObject.activeInHierarchy)
+                        {
+                            uiObjects[i].uiGameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            print(uiObjects[i].uiGameObject + " is already disabled");
+                        }
                     }
                 }
             }
@@ -131,7 +137,7 @@ namespace Project.Managers
         }
 
         /// <summary>Disables all UI objects</summary>
-        public void DisableAllUIObjects(string uiName)
+        public void DisableAllUIObjects()
         {
             for (int i = 0; i < uiObjects.Count; i++)
             {
