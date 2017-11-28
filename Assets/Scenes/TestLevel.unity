@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18086207, g: 0.22640131, b: 0.30721563, a: 1}
+  m_IndirectSpecularColor: {r: 0.18086259, g: 0.22640224, b: 0.30721676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1197,6 +1197,46 @@ Prefab:
       propertyPath: m_ThirdPersonCharacterAncher
       value: 
       objectReference: {fileID: 939412543}
+    - target: {fileID: 114122677799790138, guid: 111e9b5165391bd4ca89a46c6d2aa33c,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122677799790138, guid: 111e9b5165391bd4ca89a46c6d2aa33c,
+        type: 2}
+      propertyPath: distanceFog
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122677799790138, guid: 111e9b5165391bd4ca89a46c6d2aa33c,
+        type: 2}
+      propertyPath: excludeFarPixels
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122677799790138, guid: 111e9b5165391bd4ca89a46c6d2aa33c,
+        type: 2}
+      propertyPath: useRadialDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122677799790138, guid: 111e9b5165391bd4ca89a46c6d2aa33c,
+        type: 2}
+      propertyPath: height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122677799790138, guid: 111e9b5165391bd4ca89a46c6d2aa33c,
+        type: 2}
+      propertyPath: heightDensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122677799790138, guid: 111e9b5165391bd4ca89a46c6d2aa33c,
+        type: 2}
+      propertyPath: startDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122677799790138, guid: 111e9b5165391bd4ca89a46c6d2aa33c,
+        type: 2}
+      propertyPath: fogShader
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 111e9b5165391bd4ca89a46c6d2aa33c, type: 2}
   m_IsPrefabParent: 0
