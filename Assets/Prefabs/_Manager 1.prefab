@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 114520352407230880}
   - component: {fileID: 114597240656966398}
   - component: {fileID: 114857741009308214}
+  - component: {fileID: 114347713042724158}
+  - component: {fileID: 114011441245259278}
+  - component: {fileID: 114799486542405244}
   m_Layer: 0
   m_Name: _Manager 1
   m_TagString: Untagged
@@ -42,6 +45,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114011441245259278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1793470654592214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b0f5a650ee42f45838b247e2921474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallCapList: []
+--- !u!114 &114347713042724158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1793470654592214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fce2003f6d794749af9a001c033ff8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testString: OrbitUI
+  testBool: 0
+  uiElements:
+  - elementName: OrbitUI
+    uiObject: {fileID: 0}
+  uiInstance: {fileID: 0}
 --- !u!114 &114520352407230880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,6 +146,12 @@ MonoBehaviour:
     m_KeyName: jump
     m_SavedInputName: 
     m_SavedKey: 0
+  m_Fire:
+    m_UnityInputName: NoInput
+    m_Keycode: 323
+    m_KeyName: 
+    m_SavedInputName: 
+    m_SavedKey: 0
 --- !u!114 &114597240656966398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,6 +164,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ActiveEvents: []
+--- !u!114 &114799486542405244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1793470654592214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a5ae468f636c2499bc4c861967a72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  save: 0
 --- !u!114 &114857741009308214
 MonoBehaviour:
   m_ObjectHideFlags: 1

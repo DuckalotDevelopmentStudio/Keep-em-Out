@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -65,7 +65,7 @@ LightmapSettings:
     m_CompAOExponentDirect: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
-    m_LightmapsBakeMode: 1
+    m_LightmapsBakeMode: 0
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
@@ -794,7 +794,13 @@ Prefab:
       propertyPath: m_Name
       value: _Manager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114799486542405244, guid: f9c70c72be360ea448fe89219c4d434c,
+        type: 2}
+      propertyPath: save
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114799486542405244, guid: f9c70c72be360ea448fe89219c4d434c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f9c70c72be360ea448fe89219c4d434c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &575055161
@@ -1452,12 +1458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6501b6c493fe2c24c99854da01281e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalHealth: 100
-  CurrentHealth: 0
-  Damage: 50
-  HealthBar: {fileID: 1845041327}
-  HealthBarText: {fileID: 710167496}
-  HealthBarEnemy: {fileID: 276095503}
 --- !u!114 &1004756731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1470,9 +1470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5d81450ec29e54da1ee48c70f04169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Wall: {fileID: 4616869493848350, guid: e73dd619e6795e248a9da7fe976c6d92, type: 2}
-  speed: 4
-  accelleration: 8
 --- !u!195 &1004756732
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1840,6 +1837,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1132497900 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1793470654592214, guid: f9c70c72be360ea448fe89219c4d434c,
+    type: 2}
+  m_PrefabInternal: {fileID: 565493607}
+--- !u!114 &1132497901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132497900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea77895e535dc624ba5c21c6a52d4eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCustomClass:
+    m_UnityInputName: NoInput
+    m_Keycode: 0
+    m_KeyName: 
+    m_SavedInputName: 
+    m_SavedKey: 0
+  myCustomFloat: 5
+  myCustomList: 
+  myCustomString: just joking
+--- !u!114 &1132497908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132497900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a5ae468f636c2499bc4c861967a72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveFolderName: data
+  FileEndings: .duckalot
 --- !u!1001 &1238240408
 Prefab:
   m_ObjectHideFlags: 0
@@ -2269,6 +2304,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -180.068
       objectReference: {fileID: 0}
+    - target: {fileID: 114966967918240834, guid: d848bf455232e6446a294a162d9b43ac,
+        type: 2}
+      propertyPath: BowBarrel
+      value: 
+      objectReference: {fileID: 100164, guid: 0176cd00d65ed0d4ebd0f7284914f7be, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d848bf455232e6446a294a162d9b43ac, type: 2}
   m_IsPrefabParent: 0
