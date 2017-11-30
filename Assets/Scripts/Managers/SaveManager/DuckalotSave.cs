@@ -2,7 +2,7 @@
 	[System.Serializable]
 	public class DuckalotSave {
 		
-		public object data;
 		public string key;
+		public string data;
 	}
 }

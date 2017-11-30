@@ -2,6 +2,8 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Project.Managers {
 	/// <summary>
@@ -45,6 +47,12 @@ namespace Project.Managers {
 			}
 
 			Debug.Log ("Save-Files get Loaded/Saved at: " + SavePath );
+
+			int i = 57835;
+
+			Save ( i, "Test Key" );
+			var v = (int)Load ( "Test Key" );
+			Debug.Log ( v );
 		}
 
 
@@ -59,18 +67,69 @@ namespace Project.Managers {
 			SaveManager.m_Instance.id = Guid.NewGuid ();
 			string fileName = SaveManager.m_Instance.id.ToString ();
 
-			BinaryFormatter bFormat = new BinaryFormatter ();
-			using ( FileStream fStream = File.Create ( SavePath + "/" + fileName + SaveManager.m_Instance.FileEndings ) ) {
+			if ( !DataExist(key) ) {
+				BinaryFormatter bFormat = new BinaryFormatter ();
+				using ( FileStream fStream = File.Create ( SavePath + "/" + fileName + SaveManager.m_Instance.FileEndings ) ) {
 
-				DuckalotSave save = new DuckalotSave ();
-				save.data = data;
+					DuckalotSave save = new DuckalotSave ();
 
-				var keyBytes = System.Text.Encoding.UTF8.GetBytes(key);
-				save.key = System.Convert.ToBase64String ( keyBytes );
+					using ( var memoryStream = new MemoryStream () ) {
+						bFormat.Serialize(memoryStream, data);
+						memoryStream.Flush();
+						memoryStream.Position = 0;
+						string value = Convert.ToBase64String(memoryStream.ToArray());
+						save.data = value;
+					}
 
-				bFormat.Serialize ( fStream, save );
+					var keyBytes = System.Text.Encoding.UTF8.GetBytes(key);
+					save.key = System.Convert.ToBase64String ( keyBytes );
 
-				fStream.Close ();
+					bFormat.Serialize ( fStream, save );
+
+					fStream.Close ();
+				}
+			} else {
+				DirectoryInfo d = new DirectoryInfo ( SavePath );
+				FileInfo[] files = d.GetFiles ( "*" + SaveManager.m_Instance.FileEndings, SearchOption.TopDirectoryOnly );
+
+				BinaryFormatter bFormat = new BinaryFormatter ();
+
+				for ( int i = 0; i < files.Length; i++ ) {
+
+					using ( FileStream fStream = files [i].Open ( FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite ) ) {
+
+						DuckalotSave s = ( DuckalotSave )bFormat.Deserialize ( fStream );
+
+						var deserializedKey = System.Convert.FromBase64String ( s.key );
+
+						if ( key == System.Text.Encoding.UTF8.GetString( deserializedKey ) ) {
+
+							fStream.Close ();
+
+							files [i].Delete ();
+
+							using ( FileStream fileStream = File.Create ( SavePath + "/" + fileName + SaveManager.m_Instance.FileEndings ) ) {
+
+								DuckalotSave save = new DuckalotSave ();
+
+								using ( var memoryStream = new MemoryStream () ) {
+									bFormat.Serialize(memoryStream, data);
+									memoryStream.Flush();
+									memoryStream.Position = 0;
+									string value = Convert.ToBase64String(memoryStream.ToArray());
+									save.data = value;
+								}
+
+								var keyBytes = System.Text.Encoding.UTF8.GetBytes(key);
+								save.key = System.Convert.ToBase64String ( keyBytes );
+
+								bFormat.Serialize ( fileStream, save );
+
+								fileStream.Close ();
+							}
+						}
+					}
+				}
 			}
 		}
 
@@ -90,6 +149,7 @@ namespace Project.Managers {
 			for ( int i = 0; i < files.Length; i++ ) {
 
 				using ( FileStream fStream = files [i].Open ( FileMode.Open, FileAccess.Read, FileShare.ReadWrite ) ) {
+
 					DuckalotSave s = ( DuckalotSave )bFormat.Deserialize ( fStream );
 
 					var deserializedKey = System.Convert.FromBase64String ( s.key );
@@ -97,7 +157,10 @@ namespace Project.Managers {
 					if ( key == System.Text.Encoding.UTF8.GetString( deserializedKey ) ) {
 
 						fStream.Close ();
-						return s.data;
+
+						byte[] mData = System.Convert.FromBase64String ( s.data );
+
+						return RawDeserializer(mData);
 					}
 				}
 
@@ -107,11 +170,11 @@ namespace Project.Managers {
 		}
 
 		/// <summary>
-		/// Checks if the file exist.
+		/// Checks if the file exist true = Data Exist, false = Data not exist
 		/// </summary>
 		/// <returns><c>true</c>, if the file exist, <c>false</c> otherwise.</returns>
 		/// <param name="key">The Key for the data you looking for.</param>
-		public static bool CheckIfExist(string key) {
+		public static bool DataExist(string key) {
 			DirectoryInfo d = new DirectoryInfo ( SavePath );
 			FileInfo[] files = d.GetFiles ( "*" + SaveManager.m_Instance.FileEndings, SearchOption.TopDirectoryOnly );
 
@@ -132,6 +195,31 @@ namespace Project.Managers {
 
 			}
 			return false;
+		}
+
+		public static byte[] RawSerializer(object _object)
+		{   
+			byte[] bytes;
+			using (var _MemoryStream = new MemoryStream())
+			{
+				BinaryFormatter _BinaryFormatter = new BinaryFormatter();
+				_BinaryFormatter.Serialize(_MemoryStream, _object);
+				bytes = _MemoryStream.ToArray();
+				_MemoryStream.Close ();
+			}
+			return bytes;
+		}
+
+		public static object RawDeserializer(byte[] _byteArray)
+		{   
+			object o = new object ();
+			using (var _MemoryStream = new MemoryStream(_byteArray))
+			{
+				BinaryFormatter _BinaryFormatter = new BinaryFormatter();
+				o = ( object )_BinaryFormatter.Deserialize(_MemoryStream); 
+				_MemoryStream.Close ();
+			}
+			return o;
 		}
 	}
 }
