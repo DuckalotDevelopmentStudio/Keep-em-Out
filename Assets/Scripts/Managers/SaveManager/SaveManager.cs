@@ -2,8 +2,6 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace Project.Managers {
 	/// <summary>
@@ -47,12 +45,6 @@ namespace Project.Managers {
 			}
 
 			Debug.Log ("Save-Files get Loaded/Saved at: " + SavePath );
-
-			int i = 57835;
-
-			Save ( i, "Test Key" );
-			var v = (int)Load ( "Test Key" );
-			Debug.Log ( v );
 		}
 
 
@@ -170,7 +162,7 @@ namespace Project.Managers {
 		}
 
 		/// <summary>
-		/// Checks if the file exist true = Data Exist, false = Data not exist
+		/// Checks if the file exist, true = Data Exist, false = Data not exist
 		/// </summary>
 		/// <returns><c>true</c>, if the file exist, <c>false</c> otherwise.</returns>
 		/// <param name="key">The Key for the data you looking for.</param>
@@ -195,6 +187,34 @@ namespace Project.Managers {
 
 			}
 			return false;
+		}
+
+		/// <summary>
+		/// Deletes the data of a savefile.
+		/// </summary>
+		/// <param name="key">Key to access the data.</param>
+		public static void DeleteData(string key) {
+			DirectoryInfo d = new DirectoryInfo ( SavePath );
+			FileInfo[] files = d.GetFiles ( "*" + SaveManager.m_Instance.FileEndings, SearchOption.TopDirectoryOnly );
+
+			BinaryFormatter bFormat = new BinaryFormatter ();
+
+			for ( int i = 0; i < files.Length; i++ ) {
+
+				using ( FileStream fStream = files [i].Open ( FileMode.Open, FileAccess.Read, FileShare.ReadWrite ) ) {
+					DuckalotSave s = ( DuckalotSave )bFormat.Deserialize ( fStream );
+
+					var deserializedKey = System.Convert.FromBase64String ( s.key );
+
+					if ( key == System.Text.Encoding.UTF8.GetString( deserializedKey ) ) {
+						fStream.Close ();
+						files [i].Delete ();
+						return;
+					}
+				}
+
+			}
+			Debug.Log("Cant find the data, is this key correct? : " + key);
 		}
 
 		public static byte[] RawSerializer(object _object)
