@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4229241041148068}
   - component: {fileID: 114520352407230880}
-  - component: {fileID: 114597240656966398}
   - component: {fileID: 114857741009308214}
   - component: {fileID: 114347713042724158}
   - component: {fileID: 114011441245259278}
-  - component: {fileID: 114799486542405244}
+  - component: {fileID: 114716921504106218}
+  - component: {fileID: 114398592175086452}
   m_Layer: 0
   m_Name: _Manager 1
   m_TagString: Untagged
@@ -74,6 +74,18 @@ MonoBehaviour:
   - elementName: OrbitUI
     uiObject: {fileID: 0}
   uiInstance: {fileID: 0}
+--- !u!114 &114398592175086452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1793470654592214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd5f4fc86655c6459a2e5a06ff3e563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Events: []
 --- !u!114 &114520352407230880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,19 +164,7 @@ MonoBehaviour:
     m_KeyName: 
     m_SavedInputName: 
     m_SavedKey: 0
---- !u!114 &114597240656966398
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1793470654592214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 197655a47b7997b4e9b0b98417c63a4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActiveEvents: []
---- !u!114 &114799486542405244
+--- !u!114 &114716921504106218
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -175,7 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a5ae468f636c2499bc4c861967a72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  save: 0
+  SaveFolderName: data
+  FileEndings: .duckalot
 --- !u!114 &114857741009308214
 MonoBehaviour:
   m_ObjectHideFlags: 1
