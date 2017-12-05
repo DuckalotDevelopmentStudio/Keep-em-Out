@@ -88,7 +88,7 @@ namespace Project.Managers {
 
 				for ( int i = 0; i < files.Length; i++ ) {
 
-					using ( FileStream fStream = files [i].Open ( FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite ) ) {
+					using ( FileStream fStream = files [i].Open ( FileMode.Open, FileAccess.Read, FileShare.ReadWrite ) ) {
 
 						DuckalotSave s = ( DuckalotSave )bFormat.Deserialize ( fStream );
 
