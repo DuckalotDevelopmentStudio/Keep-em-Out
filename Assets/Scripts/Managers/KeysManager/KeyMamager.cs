@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Project.Managers.Properties;
 
-namespace Fox.Flow {
+namespace Project.Managers {
 	/// <summary>
 	/// Key mamager for the UI and to disable all Keys
 	/// </summary>

@@ -1,20 +1,55 @@
 ﻿using UnityEngine;
+using Project.SOs;
 
-namespace Project.BaseClases
+namespace Project.BaseClasses
 {
+    ///<summary>
+    ///Base class for all characters
+    ///</summary>
     public class Character : MonoBehaviour
-    {        
-        protected void CharacterUpdateCalls()                   /// <summary>Contains all the base class' UpdateCalls (call inside of Update() of a derived class)</summary>
+    {
+        /// <summary>
+        /// CharacterStats SO
+        /// </summary>
+        public CharacterStats charStats = null;
+
+        /// <summary>
+        /// Character's current HP amount
+        /// </summary>
+        public int currentHP = 0;
+
+        void Start()
         {
-            //-- Destroy gameObject if currentHP <= 0
+            if (!charStats)
+                charStats = ScriptableObject.CreateInstance<CharacterStats>();
+
+            currentHP = charStats.maxHP;
         }
 
-        public virtual void TakeDamage(int damage)              /// <summary>Subtracts damage from the character's current HP</summary> <param name="damage">Desired amount of damage to subtract</param>
+        ///<summary>
+        ///Contains all the base class' UpdateCalls (call inside of Update() of a derived class)
+        ///</summary>
+        protected void CharacterUpdateCalls()
         {
-            //-- Subtract damage from current HP
+            if (charStats.maxHP <= 0)
+                Die();
         }
 
-        public virtual void Die()                               /// <summary>Destroys the character</summary>
+        /// <summary>
+        /// Subtracts damage from the character's current HP
+        /// </summary> 
+        /// <param name="damage">
+        /// Desired amount of damage to subtract
+        /// </param>
+        public virtual void TakeDamage(int damage)
+        {
+            currentHP -= damage;
+        }
+
+        /// <summary>
+        /// Destroys the character
+        /// </summary>
+        public virtual void Die()
         {
             Destroy(gameObject);
         }

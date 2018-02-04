@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Fox.Flow {
+namespace Project.Managers.Properties {
 	[System.Serializable]
 	/// <summary>
 	/// Key serialized to store the Key Data
