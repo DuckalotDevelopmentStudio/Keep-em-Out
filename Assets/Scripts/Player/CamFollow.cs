@@ -109,7 +109,7 @@ public class CamFollow : MonoBehaviour
     /// <summary>
     /// Stop following and rotating the object
     /// </summary>
-    private void StopFollowingAndRotatingObject()
+    public void StopFollowingAndRotatingObject()
     {
         if(followObject)
             followObject = false;

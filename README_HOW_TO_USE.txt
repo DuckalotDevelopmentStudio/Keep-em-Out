@@ -8,7 +8,7 @@ Updating the repo:
 1) Open the repo inside of the app
 2) MAKE SURE THE CURRENT BRANCH IS SET TO TEST
 3) Fetch for updates
-	If there are any, download them first
+	If there are any, download them first (pull)
 4) Write a summary of what you changed in the lower-left corner
 5) Commit with the changes
 6) Push them onto the repo
