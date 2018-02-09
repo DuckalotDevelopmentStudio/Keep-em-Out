@@ -29,9 +29,9 @@ namespace Project.Managers
         void Awake()
         {
             #region Singleton
-            if (instance != this)
+            if (instance != null)
             {
-                print("More than one instance of " + this.name + ". （╯ ͡°  ل͜ ͡°）╯︵ ┻━┻, ");
+                Destroy(this);
             }
             instance = this;
             #endregion

@@ -32,7 +32,7 @@ namespace Project.Managers {
 		void Awake () {
 			#region Singleton from SaveManager
 			if (m_Instance != null) {
-				Debug.LogError("More then 1 instance found " + m_Instance.name);
+                Destroy(this);
 				return;
 			}
 			m_Instance = this;

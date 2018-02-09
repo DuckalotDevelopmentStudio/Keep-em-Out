@@ -45,7 +45,7 @@ namespace Project.Managers {
         #region Singleton
         void Awake() {
 			if ( m_Instance != null ) {
-				Debug.LogError( "More then ONE KeyManager in the Scene " + m_Instance.name + " please FIX" );
+                Destroy(this);
 				return;
 			}
 			m_Instance = this;

@@ -29,7 +29,7 @@ namespace Project.Managers {
 
 			#region Singleton from EventManager
 			if (m_Instance != null) {
-				Debug.LogError("More then 1 instance found " + m_Instance.name);
+                Destroy(this);
 			//	m_Instance = this;
 				return;
 			}

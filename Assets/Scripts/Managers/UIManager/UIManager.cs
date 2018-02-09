@@ -20,7 +20,7 @@ namespace Project.Managers
             #region Singleton
             if (instance != null)
             {
-                print("More than one instance of " + this.name + ". （╯ ͡°  ل͜ ͡°）╯︵ ┻━┻");
+                Destroy(this);
             }
             instance = this;
             #endregion
