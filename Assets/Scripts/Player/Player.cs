@@ -11,9 +11,10 @@ namespace Project.Player
         /// </summary>
         public static DuckalotEvent PlayerDied;
 
+		// MAke sure register your event when all actions in the EventManager are done! so i set the Manager GameObject in the Hierarchy to the top to run at first
         void Awake()
         {
-            PlayerDied = EventManager.RegisterEvent("Player Died", this);       // Register the event inside of EventManager
+			PlayerDied = EventManager.RegisterEvent("OnPLayerDied", this);      // Register the event inside of EventManager
         }
 
         void Update()

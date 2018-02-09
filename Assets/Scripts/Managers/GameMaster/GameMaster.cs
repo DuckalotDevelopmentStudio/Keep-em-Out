@@ -31,7 +31,7 @@ namespace Project.Managers
             #region Singleton
             if (instance != this)
             {
-                print("More than one instance of " + this.name + ". （╯ ͡°  ل͜ ͡°）╯︵ ┻━┻");
+                print("More than one instance of " + this.name + ". （╯ ͡°  ل͜ ͡°）╯︵ ┻━┻, ");
             }
             instance = this;
             #endregion
@@ -39,7 +39,7 @@ namespace Project.Managers
 
         void Start()
         {
-            Player.Player.PlayerDied.AddListerner(PlayerDied, "OnPlayerDied");
+            Player.Player.PlayerDied.AddListerner(PlayerDied, "OnPlayerDied", this);
         }
 
         void LateUpdate()

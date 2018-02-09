@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Project.Player;
+using Project.Managers;
 
 ///<summary>Class to making a camera follow (and rotate) an object</summary>
 [RequireComponent(typeof(Camera))]
@@ -53,7 +54,8 @@ public class CamFollow : MonoBehaviour
                 + objectToFollow.name 
                 + " | Offset: " + offset.ToString());
 
-        Player.PlayerDied.AddListerner(StopFollowingAndRotatingObject, "Cam Stop Following and Rotating Player");       // Stop following and rotating player on death
+
+		Player.PlayerDied.AddListerner(StopFollowingAndRotatingObject, "Cam Stop Following and Rotating Player", this);       // Stop following and rotating player on death
     }
 
     void Update()

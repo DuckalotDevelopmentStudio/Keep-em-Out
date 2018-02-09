@@ -8,7 +8,8 @@ namespace Project.Managers {
 	/// <summary>
 	/// Duckalot event. to add and remove listerners and also to Invoke the event
 	/// </summary>
-	public class DuckalotEvent {
+	public class DuckalotEvent
+	{
 
 		/// <summary>
 		/// The name of the Event.
@@ -51,11 +52,12 @@ namespace Project.Managers {
 		/// </summary>
 		/// <param name="function">Function you want to listen</param>
 		/// <param name="listernerName">The name of the Listerner be creative.</param>
-		public void AddListerner(Action function, string listernerName) {
+		public void AddListerner(Action function, string listernerName, Behaviour caller) {
 			if ( isRegistrated ) {
-				DuckalotListerner l = new DuckalotListerner ();
+				DuckalotListerner l = new DuckalotListerner();
 				l.function = function;
 				l.name = listernerName;
+				l.caller = caller;
 
 				listerners.Add(l);
 
@@ -83,7 +85,7 @@ namespace Project.Managers {
 				if ( listerners.Count > 0 ) {
 					Event.Invoke ();
 				} else {
-					Debug.Log ( "You have no Event Function to Invoke, add your function first with AddListerner( Action function, string functionName )" );
+					//Debug.Log ( "You have no Event Function to Invoke, add your function first with AddListerner( Action function, string functionName )" );
 				}
 			} else {
 				Debug.LogError("You need register the event with the name " + name + ", first bevore you can call Invoke()");
@@ -121,7 +123,7 @@ namespace Project.Managers {
 						listerners.Clear ();
 
 						for ( int i = 0; i < l.Count; i++ ) {
-							AddListerner ( l[i].function, l [i].name );
+							AddListerner ( l[i].function, l [i].name, l[i].caller );
 						}
 
 					} else {

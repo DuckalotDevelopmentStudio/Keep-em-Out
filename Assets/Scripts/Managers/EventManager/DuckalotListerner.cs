@@ -1,11 +1,13 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Project.Managers {
 	[Serializable]
 	/// <summary>
 	/// Duckalot listerner.
 	/// </summary>
-	public class DuckalotListerner {
+	public class DuckalotListerner
+	{
 
 		/// <summary>
 		/// The name of the listerner.
@@ -15,5 +17,7 @@ namespace Project.Managers {
 		/// The function you want to listen.
 		/// </summary>
 		public Action function;
+
+		public Behaviour caller;
 	}
 }

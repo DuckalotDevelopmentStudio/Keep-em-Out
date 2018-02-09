@@ -39,3 +39,7 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 Thumbs.db
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
