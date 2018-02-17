@@ -16,5 +16,5 @@ public class Enemy : Character {
     public override void Die()
     {
         base.Die();                                                         //dies by using the base character class
-    }    
+    }
 }
