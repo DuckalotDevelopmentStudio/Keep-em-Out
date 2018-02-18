@@ -1,24 +1,38 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour {
-
-    public GameObject Target;
-    private NavMeshAgent agent;
-
-    void Start()
+namespace Project.Enemy
+{
+    [RequireComponent(typeof(Enemy), typeof(NavMeshAgent))]
+    public class EnemyMovement : MonoBehaviour
     {
-        agent = GetComponent<NavMeshAgent>();                           //this is a reference to the NavMeshAgent
-    }
+        private Enemy en;
 
-    //this can be called from the wavespawner to set the target for the enemy by using EnemyMovement.SetTarget(implement a gameobject here)
-    public void SetTarget(GameObject target)
-    {
-        Target = target;
-    }
+        /// <summary>
+        /// Transform component of the enemy's target
+        /// </summary>
+        public Transform target;
 
-    void Update()
-    {
-        agent.SetDestination(Target.transform.position);                //this will set the target for the enemy so it will walk to it
+        private NavMeshAgent agent;
+
+        void Start()
+        {
+            en = GetComponent<Enemy>();                                     // Reference to the Enemy script
+            agent = GetComponent<NavMeshAgent>();                           //this is a reference to the NavMeshAgent
+        }
+
+        void Update()
+        {
+            agent.SetDestination(target.position * en.charStats.movementSpeed);         //this will set the target for the enemy so it will walk to it
+        }
+
+        /// <summary>
+        /// Sets the Enemy's target to move to
+        /// </summary>
+        /// <param name="targetsTransform">Transform of the target</param>
+        public void SetTarget(Transform targetsTransform)
+        {
+            target = targetsTransform;
+        }
     }
 }
