@@ -16,22 +16,35 @@ namespace Project.Managers
             public float health;
         }
 
+        [System.Serializable]
+        public class SpawnArea
+        {
+            public Vector3 corner1;
+            public Vector3 corner2;
+        }
+
         [SerializeField]
         public enum SpawnState { Spawning, Counting, Waiting };
+        public enum SpawnMode { Spawnpoints, Spawnareas };
+
+        //set a variable of type SpawnState to counting
+        public SpawnState state = SpawnState.Counting;
+
+        public SpawnMode spawnMode = SpawnMode.Spawnpoints;
 
         //making an array of copies of the wave class
         public List<Wave> waves = new List<Wave>();
         public int nextWave = 0;
 
         public Transform[] spawnPoints;
+        public SpawnArea[] spawnAreas;
 
         public float relaxTime = 2f;
         public float waveCountdown;
 
         private float enemyCheckCountdown = 1f;
 
-        //set a variable of type SpawnState to counting
-        public SpawnState state = SpawnState.Counting;
+        
 
         [Header("Multipliers")]
         public float maxPower = 500f;
@@ -125,14 +138,29 @@ namespace Project.Managers
         //Enemy spawning method
         void SpawnEnemy(Transform _enemy)
         {
-            if (spawnPoints.Length == 0)
+            if (spawnMode == SpawnMode.Spawnpoints)
             {
-                Debug.LogError("No spawn points referenced");
+                if (spawnPoints.Length == 0)
+                {
+                    Debug.LogError("No spawn points referenced");
+                    return;
+                }
+                //Spawn enemy
+                Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
+                Instantiate(_enemy, sp.position, sp.rotation);
+                Debug.Log("Spawning Enemy " + _enemy.name);
+            }else if(spawnMode == SpawnMode.Spawnpoints)
+            {
+                if(spawnAreas.Length == 0)
+                {
+                    Debug.LogError("No spawn areas referenced");
+                    return;
+                }
+                SpawnArea sa = spawnAreas[Random.Range(0, spawnAreas.Length)];
+                Vector3 pos = new Vector3(Random.Range(sa.corner1.x, sa.corner2.x), Random.Range(sa.corner1.y, sa.corner2.y), Random.Range(sa.corner1.z, sa.corner2.z));
+                Instantiate(_enemy, pos, Quaternion.identity);
+                Debug.Log("Spawning Enemy " + _enemy.name);
             }
-            //Spawn enemy
-            Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            Instantiate(_enemy, sp.position, sp.rotation);
-            Debug.Log("Spawning Enemy " + _enemy.name);
         }
         void WaveCompleted()
         {
@@ -161,7 +189,3 @@ namespace Project.Managers
         }
     }
 }
-
-
-
-
