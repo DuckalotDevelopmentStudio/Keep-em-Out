@@ -61,6 +61,7 @@ namespace Project.Managers
                     break;
                 case GameState.GameOver:
                     // Game Over stuff
+                    Debug.Log("Game over");
                     break;
             }
         }
